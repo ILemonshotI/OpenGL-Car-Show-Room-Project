@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{e4e9544f-5b25-4783-a52a-00691f97d85c}</ProjectGuid>
+    <RootNamespace>CarShowRoomProject</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)Header Files;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;
+opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)Header Files;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;
+opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Header Files\BackDiv.hpp" />
+    <ClInclude Include="Header Files\BackWindow.hpp" />
+    <ClInclude Include="Header Files\Camera.h" />
+    <ClInclude Include="Header Files\Car.hpp" />
+    <ClInclude Include="Header Files\CarBack.hpp" />
+    <ClInclude Include="Header Files\CarBottom.hpp" />
+    <ClInclude Include="Header Files\CarDoor.hpp" />
+    <ClInclude Include="Header Files\CarDoorBody.hpp" />
+    <ClInclude Include="Header Files\CarFront.hpp" />
+    <ClInclude Include="Header Files\CarRoof.hpp" />
+    <ClInclude Include="Header Files\CarWindow.hpp" />
+    <ClInclude Include="Header Files\CarWindShield.hpp" />
+    <ClInclude Include="Header Files\Cube.hpp" />
+    <ClInclude Include="Header Files\Cylinder.hpp" />
+    <ClInclude Include="Header Files\EBO.hpp" />
+    <ClInclude Include="Header Files\HeadLights.hpp" />
+    <ClInclude Include="Header Files\Material.hpp" />
+    <ClInclude Include="Header Files\MidDiv.hpp" />
+    <ClInclude Include="Header Files\model_EBO.h" />
+    <ClInclude Include="Header Files\model_Mesh.h" />
+    <ClInclude Include="Header Files\model_Model.h" />
+    <ClInclude Include="Header Files\model_Texture.h" />
+    <ClInclude Include="Header Files\model_VAO.h" />
+    <ClInclude Include="Header Files\model_VBO.h" />
+    <ClInclude Include="Header Files\Object.hpp" />
+    <ClInclude Include="Header Files\Shader.hpp" />
+    <ClInclude Include="Header Files\SideMirror.hpp" />
+    <ClInclude Include="Header Files\tailLights.hpp" />
+    <ClInclude Include="Header Files\Texture.hpp" />
+    <ClInclude Include="Header Files\Torus.h" />
+    <ClInclude Include="Header Files\VAO.hpp" />
+    <ClInclude Include="Header Files\VBO.hpp" />
+    <ClInclude Include="Header Files\WDiv.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource Files\textures\Leather.png" />
+    <Image Include="Resource Files\textures\messi.png" />
+    <Image Include="Resource Files\textures\painted_metal_shutter.png" />
+    <Image Include="Resource Files\textures\wheel2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource Files\shaders\car_shader.frag" />
+    <None Include="Resource Files\shaders\car_shader.vert" />
+    <None Include="Resource Files\shaders\model_shader.frag" />
+    <None Include="Resource Files\shaders\model_shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source Files\BackDiv.cpp" />
+    <ClCompile Include="Source Files\BackWindow.cpp" />
+    <ClCompile Include="Source Files\Camera.cpp" />
+    <ClCompile Include="Source Files\Car.cpp" />
+    <ClCompile Include="Source Files\CarBack.cpp" />
+    <ClCompile Include="Source Files\CarBottom.cpp" />
+    <ClCompile Include="Source Files\CarDoor.cpp" />
+    <ClCompile Include="Source Files\CarDoorBody.cpp" />
+    <ClCompile Include="Source Files\CarFront.cpp" />
+    <ClCompile Include="Source Files\CarRoof.cpp" />
+    <ClCompile Include="Source Files\CarWindow.cpp" />
+    <ClCompile Include="Source Files\CarWindShield.cpp" />
+    <ClCompile Include="Source Files\Cube.cpp" />
+    <ClCompile Include="Source Files\Cylinder.cpp" />
+    <ClCompile Include="Source Files\EBO.cpp" />
+    <ClCompile Include="Source Files\glad.c" />
+    <ClCompile Include="Source Files\HeadLights.cpp" />
+    <ClCompile Include="Source Files\main.cpp" />
+    <ClCompile Include="Source Files\Material.cpp" />
+    <ClCompile Include="Source Files\MidDiv.cpp" />
+    <ClCompile Include="Source Files\model_EBO.cpp" />
+    <ClCompile Include="Source Files\model_Mesh.cpp" />
+    <ClCompile Include="Source Files\model_Model.cpp" />
+    <ClCompile Include="Source Files\model_Texture.cpp" />
+    <ClCompile Include="Source Files\model_VAO.cpp" />
+    <ClCompile Include="Source Files\model_VBO.cpp" />
+    <ClCompile Include="Source Files\Object.cpp" />
+    <ClCompile Include="Source Files\Shader.cpp" />
+    <ClCompile Include="Source Files\SideMirror.cpp" />
+    <ClCompile Include="Source Files\stb.cpp" />
+    <ClCompile Include="Source Files\tailLights.cpp" />
+    <ClCompile Include="Source Files\Texture.cpp" />
+    <ClCompile Include="Source Files\Torus.cpp" />
+    <ClCompile Include="Source Files\VAO.cpp" />
+    <ClCompile Include="Source Files\VBO.cpp" />
+    <ClCompile Include="Source Files\WDiv.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Park Trash Can
+* source:	https://sketchfab.com/3d-models/park-trash-can-baee1591d1c44f74adf376fb5b6d2edb
+* author:	Peter Primini (https://sketchfab.com/Planetrix23)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Park Trash Can" (https://sketchfab.com/3d-models/park-trash-can-baee1591d1c44f74adf376fb5b6d2edb) by Peter Primini (https://sketchfab.com/Planetrix23) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

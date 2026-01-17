@@ -1,0 +1,11 @@
+# Visual Studio hidden folder (This is what's causing your error)
+.vs/
+
+# Build folders (Executables and intermediate object files)
+x64/
+Debug/
+Release/
+
+# User-specific files
+*.user
+*.suo
