@@ -115,7 +115,7 @@ int main() {
 
     myCar.baseSize = glm::vec3(2.0f, 1.0f, 1.5f);
     cube.baseSize = glm::vec3(1.0f, 1.0f, 1.0f);
-    cube.setScale(glm::vec3(2.0f, 2.0f, 2.0f));
+   // cube.setScale(glm::vec3(2.0f, 2.0f, 2.0f));
 
     // ---------------------------------------------------------
     // 9. LIGHTING AND GLOBAL RENDER STATE
