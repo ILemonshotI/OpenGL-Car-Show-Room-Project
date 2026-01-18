@@ -60,6 +60,7 @@ int main() {
         return -1;
     }
     glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     gladLoadGL();
     glViewport(0, 0, width, height);
 
@@ -96,7 +97,7 @@ int main() {
     // ---------------------------------------------------------
     // 7. 3D MODEL & CUSTOM OBJECT LOADING
     // ---------------------------------------------------------
-    modelModel carModel("Resource Files/3d_models/fountain/scene.gltf");
+    modelModel carModel("Resource Files/3d_models/office_table/scene.gltf");
     modelModel car1Model("Resource Files/3d_models/porsche_911/scene.gltf");
     modelModel car2Model("Resource Files/3d_models/mclaren_sienna/scene.gltf");
 
@@ -109,7 +110,7 @@ int main() {
     // ---------------------------------------------------------
     // 8. TRANSFORMS AND BASE SCALING
     // ---------------------------------------------------------
-    Transform centerCarTransform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0.001f));
+    Transform centerCarTransform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1.0f));
     Transform rightCarTransform(glm::vec3(3, 0, 2), glm::vec3(0, 45.0f, 0), glm::vec3(0.5f));
     Transform leftCarTransform(glm::vec3(-3, 0, -2), glm::vec3(0, -30.0f, 0), glm::vec3(0.5f));
 
@@ -177,6 +178,14 @@ int main() {
         // --- D. Clear Buffers ---
         glClearColor(0.86f, 0.86f, 0.86f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+        //Window Resizing
+        int currentWidth, currentHeight;
+        glfwGetFramebufferSize(window, &currentWidth, &currentHeight); // Get actual pixels
+
+        // Prevent division by zero if window is minimized
+        float aspect = (currentHeight > 0) ? (float)currentWidth / currentHeight : 1.0f;
 
         glm::mat4 view = glm::lookAt(camera.Position, camera.Position + camera.Orientation, camera.Up);
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f, 100.0f);
