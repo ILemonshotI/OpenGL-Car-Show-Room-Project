@@ -166,6 +166,7 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Header Files\VAO.hpp" />
     <ClInclude Include="Header Files\VBO.hpp" />
     <ClInclude Include="Header Files\WDiv.hpp" />
+    <ClInclude Include="Source Files\model_Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resource Files\textures\Leather.png" />
