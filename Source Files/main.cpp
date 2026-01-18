@@ -96,7 +96,7 @@ int main() {
     // ---------------------------------------------------------
     // 7. 3D MODEL & CUSTOM OBJECT LOADING
     // ---------------------------------------------------------
-    modelModel carModel("Resource Files/3d_models/mercedes_c63/scene.gltf");
+    modelModel carModel("Resource Files/3d_models/fountain/scene.gltf");
     modelModel car1Model("Resource Files/3d_models/porsche_911/scene.gltf");
     modelModel car2Model("Resource Files/3d_models/mclaren_sienna/scene.gltf");
 
@@ -109,13 +109,13 @@ int main() {
     // ---------------------------------------------------------
     // 8. TRANSFORMS AND BASE SCALING
     // ---------------------------------------------------------
-    Transform centerCarTransform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0.5f));
+    Transform centerCarTransform(glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0.001f));
     Transform rightCarTransform(glm::vec3(3, 0, 2), glm::vec3(0, 45.0f, 0), glm::vec3(0.5f));
     Transform leftCarTransform(glm::vec3(-3, 0, -2), glm::vec3(0, -30.0f, 0), glm::vec3(0.5f));
 
     myCar.baseSize = glm::vec3(2.0f, 1.0f, 1.5f);
     cube.baseSize = glm::vec3(1.0f, 1.0f, 1.0f);
-   // cube.setScale(glm::vec3(2.0f, 2.0f, 2.0f));
+    cube.setScale(glm::vec3(3.0f, 3.0f, 3.0f));
 
     // ---------------------------------------------------------
     // 9. LIGHTING AND GLOBAL RENDER STATE

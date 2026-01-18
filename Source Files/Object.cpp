@@ -112,16 +112,16 @@ void Object::scaleBy(const glm::vec3& factor)
 
 Camera::BoundingBox Object::getBoundingBox() const
 {
-    // Fixed margin that doesn't scale with the object
+    // 1. Define the margin you want in world units (fixed)
     glm::vec3 margin = glm::vec3(0.15f);
 
-    // Half size without margin in scaling
-    glm::vec3 half = baseSize * scale * 0.5f;
+    // 2. Use the UNSCALED baseSize for local corners.
+    // The getModelMatrix() will handle the scaling for us.
+    glm::vec3 half = baseSize * 0.5f;
 
-    glm::vec3 localMin = -half - margin;  // Add margin AFTER scaling
-    glm::vec3 localMax = half + margin;   // Add margin AFTER scaling
+    glm::vec3 localMin = -half;
+    glm::vec3 localMax = half;
 
-    // Rest of the function remains the same...
     glm::mat4 model = getModelMatrix();
 
     glm::vec3 corners[8] = {
@@ -137,11 +137,17 @@ Camera::BoundingBox Object::getBoundingBox() const
 
     glm::vec3 worldMin(FLT_MAX), worldMax(-FLT_MAX);
 
+    // 3. Transform corners to world space
     for (auto& c : corners) {
-        glm::vec3 w = glm::vec3(model * glm::vec4(c, 1.0));
+        glm::vec3 w = glm::vec3(model * glm::vec4(c, 1.0f));
         worldMin = glm::min(worldMin, w);
         worldMax = glm::max(worldMax, w);
     }
+
+    // 4. Apply the margin to the final World Space box
+    // This ensures the margin is always exactly 0.15 units
+    worldMin -= margin;
+    worldMax += margin;
 
     return { worldMin, worldMax };
 }
