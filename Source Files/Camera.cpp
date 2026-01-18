@@ -22,7 +22,6 @@ Camera::BoundingBox Camera::getCameraBoundingBox() const {
 // Check collision between two AABBs (Axis-Aligned Bounding Boxes)
 bool Camera::checkCollision(const BoundingBox& a, const BoundingBox& b) const {
     return (a.min.x <= b.max.x && a.max.x >= b.min.x) &&
-        (a.min.y <= b.max.y && a.max.y >= b.min.y) &&
         (a.min.z <= b.max.z && a.max.z >= b.min.z);
 }
 
@@ -120,12 +119,8 @@ void Camera::Inputs(GLFWwindow* window) {
     Position = newPosition;
 
     // Sprint
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
-        speed = 0.04f;
-    }
-    else if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE) {
-        speed = 0.01f;
-    }
+    speed = (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) ? 0.03f : 0.01f;
+
 
     // Mouse look
     if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {

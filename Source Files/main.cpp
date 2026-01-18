@@ -37,34 +37,6 @@ void CarDoorInput(GLFWwindow* window, Camera& camera, Car& mycar) {
     gWasPressed = gPressed;
 }
 
-// Function to get bounding box from a model (adjust values based on your model size)
-Camera::BoundingBox getModelBoundingBox(const glm::vec3& position, const glm::vec3& modelSize = glm::vec3(2.0f, 1.0f, 4.0f)) {
-    Camera::BoundingBox box;
-    box.min = position - modelSize * 0.5f;
-    box.max = position + modelSize * 0.5f;
-    return box;
-}
-
-// Function to get bounding box from your custom Car object
-Camera::BoundingBox getCarBoundingBox(Car& car, float extraMargin = 0.3f) {
-    glm::vec3 carPos = car.getPosition(); // Assuming Car has getPosition()
-    glm::vec3 carSize = glm::vec3(2.0f, 1.5f, 4.5f) + glm::vec3(extraMargin); // Adjust for your car size
-    Camera::BoundingBox box;
-    box.min = carPos - carSize * 0.5f;
-    box.max = carPos + carSize * 0.5f;
-    return box;
-}
-
-// Function to get bounding box from Cube
-Camera::BoundingBox getCubeBoundingBox(Cube& cube, float extraMargin = 0.3f) {
-    glm::vec3 cubePos = cube.getPosition(); // Assuming Cube has getPosition()
-    glm::vec3 cubeSize = glm::vec3(1.0f, 1.0f, 1.0f) * 5.0f + glm::vec3(extraMargin); // Your cube is scaled 5x
-    Camera::BoundingBox box;
-    box.min = cubePos - cubeSize * 0.5f;
-    box.max = cubePos + cubeSize * 0.5f;
-    return box;
-}
-
 int main() {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -91,7 +63,7 @@ int main() {
     ));
 
     // **ADJUST CAMERA SIZE** - Make collision box match player/camera size
-    camera.cameraSize = glm::vec3(0.8f, 1.8f, 0.8f); // Width, Height, Depth
+    camera.cameraSize = glm::vec3(0.5f, 1.6f, 0.5f); // Width, Height, Depth
 
     // Generate shaders
     Shader modelShader(
@@ -108,8 +80,8 @@ int main() {
     Texture wheelTex("Resource Files/textures/wheel2.png");
 
     // Init models
-    modelModel carModel("Resource Files/3d_models/audi_rs5/scene.gltf");
-    modelModel car1Model("Resource Files/3d_models/lamborghini_centenario/scene.gltf");
+    modelModel carModel("Resource Files/3d_models/mercedes_c63/scene.gltf");
+    modelModel car1Model("Resource Files/3d_models/porsche_911/scene.gltf");
     modelModel car2Model("Resource Files/3d_models/mclaren_sienna/scene.gltf");
 
     // Init custom objects
@@ -119,54 +91,28 @@ int main() {
     Cube cube(&carShader, &messi, glm::vec3(-6, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
     cube.useTexture = true;
 
-    // **ADD OBSTACLES (CARS AND CUBE) TO CAMERA'S COLLISION SYSTEM**
+
+
+    // CUSTOM OBJECTS BASE SIZE
+    myCar.baseSize = glm::vec3(2.0f, 1.0f, 1.5f);
+    cube.baseSize = glm::vec3(1.0f, 1.0f, 1.0f);
+  //cube.scale = glm::vec3(5.0f);   // WE USE THE CALING TRANSITION AND ROTATION METHODS HERE (OBJECT.CPP)
+ 
+
+
+
 
     // 1. Add center car (from model) as obstacle
     glm::vec3 centerCarPos = glm::vec3(0, 0, 0);
-    camera.addObstacle(getModelBoundingBox(centerCarPos, glm::vec3(2.0f, 1.2f, 4.5f)));
 
     // 2. Add right car (from model) as obstacle
     glm::vec3 rightCarPos = glm::vec3(3, 0, 0);
-    camera.addObstacle(getModelBoundingBox(rightCarPos, glm::vec3(2.2f, 1.3f, 4.7f)));
 
     // 3. Add left car (from model) as obstacle
     glm::vec3 leftCarPos = glm::vec3(-3, 0, 0);
-    camera.addObstacle(getModelBoundingBox(leftCarPos, glm::vec3(2.1f, 1.1f, 4.6f)));
+    
 
-    // 4. Add custom Car as obstacle
-    camera.addObstacle(getCarBoundingBox(myCar, 0.5f));
 
-    // 5. Add cube as obstacle (your cube is scaled 5x)
-    camera.addObstacle(getCubeBoundingBox(cube, 0.3f));
-
-    // 6. Add walls/barriers around the showroom (optional)
-    // Left wall
-    camera.addObstacle(Camera::BoundingBox(
-        glm::vec3(-14.5f, 0.0f, -14.5f),
-        glm::vec3(-13.5f, 5.0f, 14.5f)
-    ));
-
-    // Right wall
-    camera.addObstacle(Camera::BoundingBox(
-        glm::vec3(13.5f, 0.0f, -14.5f),
-        glm::vec3(14.5f, 5.0f, 14.5f)
-    ));
-
-    // Back wall
-    camera.addObstacle(Camera::BoundingBox(
-        glm::vec3(-14.5f, 0.0f, 13.5f),
-        glm::vec3(14.5f, 5.0f, 14.5f)
-    ));
-
-    // Front wall (with opening for entrance maybe)
-    camera.addObstacle(Camera::BoundingBox(
-        glm::vec3(-14.5f, 0.0f, -14.5f),
-        glm::vec3(-5.0f, 5.0f, -13.5f)
-    ));
-    camera.addObstacle(Camera::BoundingBox(
-        glm::vec3(5.0f, 0.0f, -14.5f),
-        glm::vec3(14.5f, 5.0f, -13.5f)
-    ));
 
     // Lighting setup
     glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -175,6 +121,23 @@ int main() {
     glEnable(GL_DEPTH_TEST);
 
     float lastTime = glfwGetTime();
+
+    // -- HERE WE ADD THE OBSTACLES AFTER DOING THE MODEL MATRIX OPERATIONS , ADD THEM LAST
+       // Add custom objects
+    camera.addObstacle(myCar.getBoundingBox());
+    camera.addObstacle(cube.getBoundingBox());
+
+    // Add loaded models
+    camera.addObstacle(carModel.getBoundingBox(glm::translate(glm::mat4(1.0f), centerCarPos)));
+    camera.addObstacle(car1Model.getBoundingBox(glm::translate(glm::mat4(1.0f), rightCarPos)));
+    camera.addObstacle(car2Model.getBoundingBox(glm::translate(glm::mat4(1.0f), leftCarPos)));
+
+    // Add showroom walls (still static AABBs)
+    camera.addObstacle({ glm::vec3(-14.5f,0,-14.5f), glm::vec3(-13.5f,5,14.5f) });
+    camera.addObstacle({ glm::vec3(13.5f,0,-14.5f), glm::vec3(14.5f,5,14.5f) });
+    camera.addObstacle({ glm::vec3(-14.5f,0,13.5f), glm::vec3(14.5f,5,14.5f) });
+    camera.addObstacle({ glm::vec3(-14.5f,0,-14.5f), glm::vec3(-5.0f,5,-13.5f) });
+    camera.addObstacle({ glm::vec3(5.0f,0,-14.5f), glm::vec3(14.5f,5,-13.5f) });
 
     // Debug: Visualize collision boxes (optional - wireframe mode)
     bool showCollisionBoxes = false;
@@ -200,6 +163,8 @@ int main() {
             static bool cWasPressed = false;
             cWasPressed = false;
         }
+
+        camera.obstacles[0] = myCar.getBoundingBox();
 
         // Update camera (includes collision detection)
         camera.Inputs(window);
@@ -234,6 +199,8 @@ int main() {
         glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "translation"), 1, GL_FALSE, glm::value_ptr(identity));
         glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "rotation"), 1, GL_FALSE, glm::value_ptr(identity));
         glUniformMatrix4fv(glGetUniformLocation(modelShader.ID, "scale"), 1, GL_FALSE, glm::value_ptr(identity));
+
+
 
         // Draw all models
         carModel.Draw(modelShader, camera, glm::translate(glm::mat4(1.0f), centerCarPos));

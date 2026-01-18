@@ -369,3 +369,22 @@ std::vector<glm::vec4> modelModel::groupFloatsVec4(std::vector<float> floatVec)
 	}
 	return vectors;
 }
+
+Camera::BoundingBox modelModel::getBoundingBox(glm::mat4 parentModel)
+{
+	glm::vec3 worldMin(FLT_MAX), worldMax(-FLT_MAX);
+
+	for (size_t i = 0; i < meshes.size(); i++)
+	{
+		glm::mat4 finalModel = parentModel * matricesMeshes[i];
+
+		for (auto& v : meshes[i].vertices)
+		{
+			glm::vec3 w = glm::vec3(finalModel * glm::vec4(v.position, 1.0));
+			worldMin = glm::min(worldMin, w);
+			worldMax = glm::max(worldMax, w);
+		}
+	}
+
+	return { worldMin, worldMax };
+}

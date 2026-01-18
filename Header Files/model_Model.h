@@ -12,8 +12,12 @@ class modelModel
 public:
 	// Loads in a model from a file and stores tha information in 'data', 'JSON', and 'file'
 	modelModel(const char* file);
+	Camera::BoundingBox getBoundingBox(glm::mat4 parentModel = glm::mat4(1.0f));
 
 	void Draw(Shader& shader, Camera& camera, glm::mat4 parentModel);
+
+
+
 
 private:
 	// Variables for easy access
@@ -52,6 +56,9 @@ private:
 		std::vector<glm::vec3> normals,
 		std::vector<glm::vec2> texUVs
 	);
+
+	
+
 
 	// Helps with the assembly from above by grouping floats
 	std::vector<glm::vec2> groupFloatsVec2(std::vector<float> floatVec);
