@@ -198,8 +198,14 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
   <ItemGroup>
     <None Include="Resource Files\shaders\car_shader.frag" />
     <None Include="Resource Files\shaders\car_shader.vert" />
+    <None Include="Resource Files\shaders\ground.frag" />
+    <None Include="Resource Files\shaders\ground.vert" />
     <None Include="Resource Files\shaders\model_shader.frag" />
     <None Include="Resource Files\shaders\model_shader.vert" />
+    <None Include="Resource Files\shaders\skybox.frag" />
+    <None Include="Resource Files\shaders\skybox.vert" />
+    <None Include="Resource Files\shaders\wall.frag" />
+    <None Include="Resource Files\shaders\wall.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\ArmRest.cpp" />

@@ -26,7 +26,8 @@ public:
             : min(minBounds), max(maxBounds) {
         }
     };
-
+    const float gravity = -9.8f; // Standard gravity
+    const float jumpForce = 5.0f; // Power of the jump
     vec3 Position;
     vec3 Orientation = vec3(0.0f, 0.0f, -1.0f);
     vec3 Up = vec3(0.0f, 1.0f, 0.0f);

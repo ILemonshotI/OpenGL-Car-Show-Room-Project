@@ -217,6 +217,24 @@
     <None Include="Resource Files\shaders\model_shader.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
+    <None Include="Resource Files\shaders\ground.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="Resource Files\shaders\ground.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="Resource Files\shaders\skybox.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="Resource Files\shaders\skybox.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="Resource Files\shaders\wall.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="Resource Files\shaders\wall.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\BackDiv.cpp">

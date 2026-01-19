@@ -77,45 +77,55 @@ void Camera::Matrix(Shader& shader, const char* uniform) {
 void Camera::Inputs(GLFWwindow* window) {
     vec3 newPosition = Position;
 
-    // Movement with collision detection
+    // Calculate horizontal-only orientation (projecting onto XZ plane)
+    vec3 forward = normalize(vec3(Orientation.x, 0.0f, Orientation.z));
+    vec3 right = normalize(cross(forward, Up));
+
+    // --- WALKING MOVEMENT ---
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        vec3 tempPos = Position + speed * Orientation;
-        if (canMoveTo(tempPos)) {
-            newPosition = tempPos;
-        }
-    }
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        vec3 tempPos = Position + speed * -normalize(cross(Orientation, Up));
-        if (canMoveTo(tempPos)) {
-            newPosition = tempPos;
-        }
+        vec3 tempPos = Position + speed * forward;
+        if (canMoveTo(tempPos)) newPosition = tempPos;
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        vec3 tempPos = Position + speed * -Orientation;
-        if (canMoveTo(tempPos)) {
-            newPosition = tempPos;
-        }
+        vec3 tempPos = Position - speed * forward;
+        if (canMoveTo(tempPos)) newPosition = tempPos;
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+        vec3 tempPos = Position - speed * right;
+        if (canMoveTo(tempPos)) newPosition = tempPos;
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        vec3 tempPos = Position + speed * normalize(cross(Orientation, Up));
-        if (canMoveTo(tempPos)) {
-            newPosition = tempPos;
-        }
+        vec3 tempPos = Position + speed * right;
+        if (canMoveTo(tempPos)) newPosition = tempPos;
     }
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-        vec3 tempPos = Position + speed * Up;
-        if (canMoveTo(tempPos)) {
-            newPosition = tempPos;
-        }
-    }
+
+    // --- CROUCH LOGIC ---
+    // Standard height is 1.0 (based on your new start position). Crouch is 0.5.
+    float targetHeight = 1.0f;
     if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS) {
-        vec3 tempPos = Position + speed * -Up;
-        if (canMoveTo(tempPos)) {
-            newPosition = tempPos;
+        targetHeight = 0.5f;
+    }
+    newPosition.y = targetHeight;
+
+    // --- JUMP LOGIC (Basic) ---
+    static bool isJumping = false;
+    static float jumpTime = 0.0f;
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !isJumping) {
+        isJumping = true;
+        jumpTime = 0.0f;
+    }
+
+    if (isJumping) {
+        jumpTime += 0.005f; // Jump speed
+        // Simple sine wave for a jump arc
+        newPosition.y += sin(jumpTime * 3.14f) * 2.0f;
+        if (jumpTime >= 1.0f) {
+            isJumping = false;
+            newPosition.y = targetHeight;
         }
     }
 
-    // Update position if no collision
+    // Finalize Position
     Position = newPosition;
 
     // Sprint
