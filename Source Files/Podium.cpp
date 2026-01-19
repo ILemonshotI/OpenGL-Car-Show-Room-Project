@@ -22,8 +22,9 @@ Podium::Podium(float topRadius, float bottomRadius, float height, int segments,
 {
     setupMesh();
     this->vao = &PodiumVAO;
-}
 
+    
+}
 Podium::~Podium()
 {
     PodiumVAO.Delete();
@@ -61,6 +62,8 @@ void Podium::setupMesh()
 
     PodiumVAO.Unbind();
 }
+
+
 
 void Podium::draw(const glm::mat4& view, const glm::mat4& proj)
 {

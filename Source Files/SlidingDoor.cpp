@@ -66,8 +66,9 @@ void SlidingDoor::draw(const glm::mat4& view, const glm::mat4& proj)
 {
     // Draw left panel
     Material::setGlass(*shader, 4.0f, 0.15f);
+    glEnable(GL_BLEND);                                  // Enable mixing colors
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);    // Standard transparency formula
     glDepthMask(GL_FALSE);
-
 
     vao = &leftVAO;
     setPosition(leftPos);
@@ -78,7 +79,8 @@ void SlidingDoor::draw(const glm::mat4& view, const glm::mat4& proj)
     setPosition(rightPos);
     Object::draw(view, proj);
 
-    glDepthMask(GL_TRUE);
+    glDepthMask(GL_TRUE);   // Re-enable depth writing for other objects
+    glDisable(GL_BLEND);
     Material::unSetGlass(*shader);
 }
 

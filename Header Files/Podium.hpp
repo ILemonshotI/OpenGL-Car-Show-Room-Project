@@ -32,7 +32,9 @@ public:
 
     ~Podium();
 
-
+    glm::vec3 getCalculatedBaseSize() const {
+        return glm::vec3(m_BottomRadius * 2.0f, m_Height, m_BottomRadius * 2.0f);
+    }
     void draw(const glm::mat4& view, const glm::mat4& proj) override;
 
 

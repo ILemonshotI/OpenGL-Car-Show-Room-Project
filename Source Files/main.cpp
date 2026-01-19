@@ -20,6 +20,9 @@
 #include "Chair.hpp"
 #include "Couch.hpp"
 #include "Table.hpp"
+#include "SlidingDoor.hpp"
+#include "Podium.hpp"
+#include "Frame.hpp"
 
 #include <filesystem>
 namespace fs = std::filesystem;
@@ -129,6 +132,9 @@ int main() {
     Texture leather("Resource Files/textures/79_leather texture-seamless.jpg");
     Texture leather1("Resource Files/textures/Leather.jpg");
     Texture merc("Resource Files/textures/mercedes-logo-mercedes-benz-logos-vector-eps-cdr-svg-download-15.png");
+    Texture CLS(
+        "Resource Files/textures/CLS.png");
+   
 
 
     // ---------------------------------------------------------
@@ -138,31 +144,46 @@ int main() {
     modelModel car1Model("Resource Files/3d_models/porsche_911/scene.gltf");
     modelModel car2Model("Resource Files/3d_models/mclaren_sienna/scene.gltf");
 
-    Car myCar(&carShader, &messi, &wheelTex, &leather, &leather1, &merc, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
+    Car myCar(&carShader, &messi, &wheelTex, &leather, &leather1, &merc, glm::vec3(0, 0.45f, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
     myCar.useTexture = true;
 
-    Chair chair(&carShader, &messi, glm::vec3(-6, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
+
+    Car limo(&carShader, &messi, &wheelTex, &leather, &leather1, &merc, glm::vec3(-10, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
+    limo.scaleBy(glm::vec3(1.7, 0.8, 1));
+    limo.useTexture = true;
+
+    Chair chair(&carShader, &messi, glm::vec3(-4, 0, 8), glm::vec3(0, 1, 0), 0.0f, 1.0f);
     chair.useTexture = true;
 
-    Couch couch(&carShader, &leather1, glm::vec3(-10, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
+    Couch couch(&carShader, &leather1, glm::vec3(-8, 0, 8), glm::vec3(0, 1, 0), 0.0f, 1.0f);
     couch.useTexture = true;
 
-    Table table(&carShader, &messi, glm::vec3(-5, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f);
+    Table table(&carShader, &messi, glm::vec3(-6, 0, 8), glm::vec3(0, 1, 0), 0.0f, 1.0f);
     table.useTexture = true;
+
+    SlidingDoor door(&carShader, &messi, glm::vec3(0, 0, 10), 3.0f, 4.0f, 0.2f);
+
+    Frame frame(&carShader, &CLS, glm::vec3(0, 3, -13.4), glm::vec3(0, 1, 0), 0.0f, 1.0f);
+    frame.useTexture = 1;
+
+    Podium podium(1.5f, 1.5f, 0.4, 36, &carShader, &messi, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0), 0.0f, 1.0f); //IF SIZE IS CHANGED CHANNGE BASE SIZE
+    podium.useTexture = true;
+
+
 
     // ---------------------------------------------------------
     // 8. TRANSFORMS AND BASE SCALING
     // ---------------------------------------------------------
-    Transform centerCarTransform(glm::vec3(9, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1.0f));
-    Transform rightCarTransform(glm::vec3(3, 0, 2), glm::vec3(0, 45.0f, 0), glm::vec3(0.5f));
-    Transform leftCarTransform(glm::vec3(-3, 0, -2), glm::vec3(0, -30.0f, 0), glm::vec3(0.5f));
+    Transform centerCarTransform(glm::vec3(8, 0, -5), glm::vec3(0, 0, 0), glm::vec3(1.0f));
+    Transform rightCarTransform(glm::vec3(8, 0, 0), glm::vec3(0, 45.0f, 0), glm::vec3(0.5f));
+    Transform leftCarTransform(glm::vec3(8, 0, 5), glm::vec3(0, -30.0f, 0), glm::vec3(0.5f));
 
-   // myCar.baseSize = glm::vec3(2.0f, 1.0f, 1.5f);
+    myCar.baseSize = glm::vec3(2.0f, 1.0f, 1.5f);
     chair.baseSize = glm::vec3(0.44f, 1.1f, 0.4f);
     couch.baseSize = glm::vec3(1.2f, 0.9f, 0.4f);
     table.baseSize = glm::vec3(0.44f, 0.45f, 0.4f);
-
-    //cube.setScale(glm::vec3(3.0f, 3.0f, 3.0f));
+    podium.baseSize = podium.getCalculatedBaseSize();
+    
 
     // ---------------------------------------------------------
     // 9. LIGHTING AND GLOBAL RENDER STATE
@@ -181,6 +202,7 @@ int main() {
     camera.addObstacle(chair.getBoundingBox());
     camera.addObstacle(table.getBoundingBox());
     camera.addObstacle(couch.getBoundingBox());
+    camera.addObstacle(podium.getBoundingBox());
     camera.addObstacle(carModel.getBoundingBox(centerCarTransform.getModelMatrix()));
     camera.addObstacle(car1Model.getBoundingBox(rightCarTransform.getModelMatrix()));
     camera.addObstacle(car2Model.getBoundingBox(leftCarTransform.getModelMatrix()));
@@ -277,10 +299,27 @@ int main() {
         table.update(deltaTime);
         table.drawFull(view, projection);
 
+        limo.update(deltaTime);
+        limo.draw(view, projection);
+
+        podium.draw(view, projection);
+
+        frame.draw(view, projection);
+
+        door.update(deltaTime, camera);
+        door.draw(view, projection);
+
         myCar.update(deltaTime);
         myCar.draw(view, projection); // Drawing myCar last
 
         
+        static float debugTimer = 0.0f;
+        debugTimer += deltaTime;
+        if (debugTimer >= 0.5f) {
+            std::cout << "Cam Pos: " << camera.Position.x << ", " << camera.Position.y << ", " << camera.Position.z << std::endl;
+            debugTimer = 0.0f;
+        }
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -295,6 +334,7 @@ int main() {
     leather.Delete();
     leather1.Delete();
     merc.Delete();
+    CLS.Delete();
 
     glfwDestroyWindow(window);
     glfwTerminate();
