@@ -25,7 +25,7 @@ public:
         Shader* shader,
         Texture* texture,
         glm::vec3 position = glm::vec3(0.0f),
-        glm::vec3 rotationAxis = glm::vec3(0.0f,1.0f,0.0f),
+        glm::vec3 rotationAxis = glm::vec3(0.0f, 1.0f, 0.0f),
         float rotationSpeed = 0.0f,
         float alpha = 1.0f
     );
@@ -34,10 +34,10 @@ public:
 
     void update(float deltaTime) override;
     void draw(const glm::mat4& view, const glm::mat4& proj) override;
-     void drawWithParent(const glm::mat4& parent,
-                                const glm::mat4& view,
-                                const glm::mat4& proj) override;
-    
+    void drawWithParent(const glm::mat4& parent,
+        const glm::mat4& view,
+        const glm::mat4& proj) override;
+
 
 
 

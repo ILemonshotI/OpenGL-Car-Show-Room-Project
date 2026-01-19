@@ -133,8 +133,14 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Header Files\ArmRest.hpp" />
     <ClInclude Include="Header Files\BackDiv.hpp" />
     <ClInclude Include="Header Files\BackWindow.hpp" />
+    <ClInclude Include="Header Files\building_EBO.h" />
+    <ClInclude Include="Header Files\building_Texture.h" />
+    <ClInclude Include="Header Files\building_VAO.h" />
+    <ClInclude Include="Header Files\building_VBO.h" />
+    <ClInclude Include="Header Files\building_Wall.h" />
     <ClInclude Include="Header Files\Camera.h" />
     <ClInclude Include="Header Files\Car.hpp" />
     <ClInclude Include="Header Files\CarBack.hpp" />
@@ -143,12 +149,19 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Header Files\CarDoorBody.hpp" />
     <ClInclude Include="Header Files\CarFront.hpp" />
     <ClInclude Include="Header Files\CarRoof.hpp" />
+    <ClInclude Include="Header Files\CarSeat.hpp" />
     <ClInclude Include="Header Files\CarWindow.hpp" />
     <ClInclude Include="Header Files\CarWindShield.hpp" />
+    <ClInclude Include="Header Files\Chair.hpp" />
+    <ClInclude Include="Header Files\Couch.hpp" />
     <ClInclude Include="Header Files\Cube.hpp" />
     <ClInclude Include="Header Files\Cylinder.hpp" />
     <ClInclude Include="Header Files\EBO.hpp" />
+    <ClInclude Include="Header Files\Emblem.hpp" />
+    <ClInclude Include="Header Files\Frame.hpp" />
+    <ClInclude Include="Header Files\Ground.h" />
     <ClInclude Include="Header Files\HeadLights.hpp" />
+    <ClInclude Include="Header Files\Leg.hpp" />
     <ClInclude Include="Header Files\Material.hpp" />
     <ClInclude Include="Header Files\MidDiv.hpp" />
     <ClInclude Include="Header Files\model_EBO.h" />
@@ -158,9 +171,17 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="Header Files\model_VAO.h" />
     <ClInclude Include="Header Files\model_VBO.h" />
     <ClInclude Include="Header Files\Object.hpp" />
+    <ClInclude Include="Header Files\Pedal.hpp" />
+    <ClInclude Include="Header Files\Podium.hpp" />
     <ClInclude Include="Header Files\Shader.hpp" />
+    <ClInclude Include="Header Files\ShowRoom.h" />
     <ClInclude Include="Header Files\SideMirror.hpp" />
+    <ClInclude Include="Header Files\SkyBox.h" />
+    <ClInclude Include="Header Files\SlidingDoor.hpp" />
+    <ClInclude Include="Header Files\SteeringWheel.hpp" />
+    <ClInclude Include="Header Files\Table.hpp" />
     <ClInclude Include="Header Files\tailLights.hpp" />
+    <ClInclude Include="Header Files\Tcentre.hpp" />
     <ClInclude Include="Header Files\Texture.hpp" />
     <ClInclude Include="Header Files\Torus.h" />
     <ClInclude Include="Header Files\VAO.hpp" />
@@ -181,8 +202,14 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <None Include="Resource Files\shaders\model_shader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source Files\ArmRest.cpp" />
     <ClCompile Include="Source Files\BackDiv.cpp" />
     <ClCompile Include="Source Files\BackWindow.cpp" />
+    <ClCompile Include="Source Files\building_EBO.cpp" />
+    <ClCompile Include="Source Files\building_Texture.cpp" />
+    <ClCompile Include="Source Files\building_VAO.cpp" />
+    <ClCompile Include="Source Files\building_VBO.cpp" />
+    <ClCompile Include="Source Files\building_Wall.cpp" />
     <ClCompile Include="Source Files\Camera.cpp" />
     <ClCompile Include="Source Files\Car.cpp" />
     <ClCompile Include="Source Files\CarBack.cpp" />
@@ -191,13 +218,20 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="Source Files\CarDoorBody.cpp" />
     <ClCompile Include="Source Files\CarFront.cpp" />
     <ClCompile Include="Source Files\CarRoof.cpp" />
+    <ClCompile Include="Source Files\CarSeat.cpp" />
     <ClCompile Include="Source Files\CarWindow.cpp" />
     <ClCompile Include="Source Files\CarWindShield.cpp" />
+    <ClCompile Include="Source Files\Chair.cpp" />
+    <ClCompile Include="Source Files\Couch.cpp" />
     <ClCompile Include="Source Files\Cube.cpp" />
     <ClCompile Include="Source Files\Cylinder.cpp" />
     <ClCompile Include="Source Files\EBO.cpp" />
+    <ClCompile Include="Source Files\Emblem.cpp" />
+    <ClCompile Include="Source Files\Frame.cpp" />
     <ClCompile Include="Source Files\glad.c" />
+    <ClCompile Include="Source Files\Ground.cpp" />
     <ClCompile Include="Source Files\HeadLights.cpp" />
+    <ClCompile Include="Source Files\Leg.cpp" />
     <ClCompile Include="Source Files\main.cpp" />
     <ClCompile Include="Source Files\Material.cpp" />
     <ClCompile Include="Source Files\MidDiv.cpp" />
@@ -208,10 +242,18 @@ opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClCompile Include="Source Files\model_VAO.cpp" />
     <ClCompile Include="Source Files\model_VBO.cpp" />
     <ClCompile Include="Source Files\Object.cpp" />
+    <ClCompile Include="Source Files\Pedal.cpp" />
+    <ClCompile Include="Source Files\Podium.cpp" />
     <ClCompile Include="Source Files\Shader.cpp" />
+    <ClCompile Include="Source Files\Showroom.cpp" />
     <ClCompile Include="Source Files\SideMirror.cpp" />
+    <ClCompile Include="Source Files\SkyBox.cpp" />
+    <ClCompile Include="Source Files\SlidingDoor.cpp" />
     <ClCompile Include="Source Files\stb.cpp" />
+    <ClCompile Include="Source Files\SteeringWheel.cpp" />
+    <ClCompile Include="Source Files\Table.cpp" />
     <ClCompile Include="Source Files\tailLights.cpp" />
+    <ClCompile Include="Source Files\Tcentre.cpp" />
     <ClCompile Include="Source Files\Texture.cpp" />
     <ClCompile Include="Source Files\Torus.cpp" />
     <ClCompile Include="Source Files\VAO.cpp" />

@@ -27,15 +27,15 @@ public:
     );
 
     ~CarFront();
-    
-    
+
+
 
 
 private:
     VAO CarFrontVAO;   // renamed to avoid shadowing
     VBO* vbo;
     EBO* ebo;
-   
+
 
     void setupMesh();
 };

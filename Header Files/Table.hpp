@@ -28,25 +28,25 @@ public:
     );
 
     ~Table();
-    
-    void drawFull( const glm::mat4& view,
-                  const glm::mat4& proj);
-                                
 
-    
-    
+    void drawFull(const glm::mat4& view,
+        const glm::mat4& proj);
+
+
+
+
 
 
 private:
     VAO TableVAO;   // renamed to avoid shadowing
     VBO* vbo;
     EBO* ebo;
-    
-    
+
+
     Leg* Legs[4];
     glm::vec3 LegsOffsets[4];
-    
-   
+
+
 
     void setupMesh();
 };

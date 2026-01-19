@@ -16,7 +16,7 @@ BackWindow::BackWindow(
     float rotationSpeed,
     float alpha = 0.4
 )
-    : Object(shader, /*texture,*/ position, rotationAxis, rotationSpeed,alpha)
+    : Object(shader, /*texture,*/ position, rotationAxis, rotationSpeed, alpha)
 {
     setupMesh();
 
@@ -49,29 +49,29 @@ void BackWindow::setupMesh()
          0.025f, 0.3f, -0.6f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
          0.025f, 0.3f,  0.6f,  1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
 
-        // BACK FACE (normal 0,0,-1)
-         0.025f, 0.0f, -0.6f,  0.0f, 0.0f, -1.0f,  0.0f, 0.0f,
-        0.0f, 0.0f, -0.6f,  0.0f, 0.0f, -1.0f,  1.0f, 0.0f,
-        0.0f, 0.3f, -0.6f,  0.0f, 0.0f, -1.0f,  1.0f, 1.0f,
-         0.025f, 0.3f, -0.6f,  0.0f, 0.0f, -1.0f,  0.0f, 1.0f,
+         // BACK FACE (normal 0,0,-1)
+          0.025f, 0.0f, -0.6f,  0.0f, 0.0f, -1.0f,  0.0f, 0.0f,
+         0.0f, 0.0f, -0.6f,  0.0f, 0.0f, -1.0f,  1.0f, 0.0f,
+         0.0f, 0.3f, -0.6f,  0.0f, 0.0f, -1.0f,  1.0f, 1.0f,
+          0.025f, 0.3f, -0.6f,  0.0f, 0.0f, -1.0f,  0.0f, 1.0f,
 
-        // LEFT FACE (normal -1,0,0)
-        0.0f, 0.0f, -0.6f, -1.0f, 0.0f, 0.0f,  0.0f, 0.0f,
-        0.0f, 0.0f,  0.6f, -1.0f, 0.0f, 0.0f,  1.0f, 0.0f,
-        0.0f, 0.3f,  0.6f, -1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
-        0.0f, 0.3f, -0.6f, -1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+          // LEFT FACE (normal -1,0,0)
+          0.0f, 0.0f, -0.6f, -1.0f, 0.0f, 0.0f,  0.0f, 0.0f,
+          0.0f, 0.0f,  0.6f, -1.0f, 0.0f, 0.0f,  1.0f, 0.0f,
+          0.0f, 0.3f,  0.6f, -1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
+          0.0f, 0.3f, -0.6f, -1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
 
-        // TOP FACE (normal 0,1,0)
-        0.0f, 0.3f,  0.6f,  0.0f, 1.0f, 0.0f,  0.0f, 0.0f,
-         0.025f, 0.3f,  0.6f,  0.0f, 1.0f, 0.0f,  1.0f, 0.0f,
-         0.025f, 0.3f, -0.6f,  0.0f, 1.0f, 0.0f,  1.0f, 1.0f,
-        0.0f, 0.3f, -0.6f,  0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+          // TOP FACE (normal 0,1,0)
+          0.0f, 0.3f,  0.6f,  0.0f, 1.0f, 0.0f,  0.0f, 0.0f,
+           0.025f, 0.3f,  0.6f,  0.0f, 1.0f, 0.0f,  1.0f, 0.0f,
+           0.025f, 0.3f, -0.6f,  0.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+          0.0f, 0.3f, -0.6f,  0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
 
-        // BOTTOM FACE (normal 0,-1,0)
-        0.0f, 0.0f, -0.6f,  0.0f, -1.0f, 0.0f,  0.0f, 0.0f,
-         0.025f, 0.0f, -0.6f,  0.0f, -1.0f, 0.0f,  1.0f, 0.0f,
-         0.025f, 0.0f,  0.6f,  0.0f, -1.0f, 0.0f,  1.0f, 1.0f,
-        0.0f, 0.0f,  0.6f,  0.0f, -1.0f, 0.0f,  0.0f, 1.0f
+          // BOTTOM FACE (normal 0,-1,0)
+          0.0f, 0.0f, -0.6f,  0.0f, -1.0f, 0.0f,  0.0f, 0.0f,
+           0.025f, 0.0f, -0.6f,  0.0f, -1.0f, 0.0f,  1.0f, 0.0f,
+           0.025f, 0.0f,  0.6f,  0.0f, -1.0f, 0.0f,  1.0f, 1.0f,
+          0.0f, 0.0f,  0.6f,  0.0f, -1.0f, 0.0f,  0.0f, 1.0f
     };
 
 
@@ -83,7 +83,7 @@ void BackWindow::setupMesh()
         16,17,18, 18,19,16,
         20,21,22, 22,23,20
     };
-    
+
     BackWindowVAO.Bind();
 
     vbo = new VBO(vertices, sizeof(vertices));

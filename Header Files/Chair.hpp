@@ -1,3 +1,10 @@
+//
+//  Chair.hpp
+//  OpenGLProject
+//
+//  Created by Ameen on 1/17/26.
+//
+
 #ifndef CHAIR_HPP
 #define CHAIR_HPP
 

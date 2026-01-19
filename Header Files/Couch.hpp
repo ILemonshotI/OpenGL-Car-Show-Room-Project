@@ -1,3 +1,10 @@
+//
+//  Couch.hpp
+//  OpenGLProject
+//
+//  Created by Ameen on 1/17/26.
+//
+
 #ifndef COUCH_HPP
 #define COUCH_HPP
 

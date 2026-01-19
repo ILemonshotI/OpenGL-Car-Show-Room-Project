@@ -27,13 +27,13 @@ namespace Material
     }
 
     // ---------------- PBR ----------------
-void setPBR(Shader& shader, float metalness, float roughness, glm::vec3 albedo = glm::vec3(1.0f))
-{
-    shader.Activate();
-    glUniform1f(glGetUniformLocation(shader.ID, "metalness"), metalness);
-    glUniform1f(glGetUniformLocation(shader.ID, "roughness"), roughness);
-    glUniform3f(glGetUniformLocation(shader.ID, "albedo"), albedo.r, albedo.g, albedo.b);
-}
+    void setPBR(Shader& shader, float metalness, float roughness, glm::vec3 albedo = glm::vec3(1.0f))
+    {
+        shader.Activate();
+        glUniform1f(glGetUniformLocation(shader.ID, "metalness"), metalness);
+        glUniform1f(glGetUniformLocation(shader.ID, "roughness"), roughness);
+        glUniform3f(glGetUniformLocation(shader.ID, "albedo"), albedo.r, albedo.g, albedo.b);
+    }
 
 
     void unSetPBR(Shader& shader)

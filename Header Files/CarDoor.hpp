@@ -19,22 +19,23 @@
 class CarDoor : public Object
 {
 public:
-    CarDoor(Shader* shader,Texture* texture,
+    CarDoor(Shader* shader, Texture* texture,
         glm::vec3 position = glm::vec3(0.0f),
         glm::vec3 rotationAxis = glm::vec3(0.0f, 1.0f, 0.0f),
-    float rotationSpeed = 0.0f) ;
+        float rotationSpeed = 0.0f);
 
 
     ~CarDoor();
     void update(float deltaTime) override;
     void draw(const glm::mat4& view, const glm::mat4& proj) override;
-    virtual void drawWithParent(const glm::mat4& parentModel,
-                                const glm::mat4& view,
-                                const glm::mat4& proj) override;
+    void drawWithParent(const glm::mat4& parentModel,
+        const glm::mat4& view,
+        const glm::mat4& proj) override;
 
     void toggle();
 
-
+public:
+    bool isDoorOpen() const { return isOpen; }
 
 private:
     VAO CarDoorVAO;   // renamed to avoid shadowing
@@ -44,11 +45,11 @@ private:
     CarWindow* window;
     CarDoorBody* body;
     bool isOpen = false;
-    float currentAngle = 0.0f;      // degrees
-    float targetAngle = 0.0f;       // degrees
-    float openSpeed = 90.0f;        // deg/sec
+    float currentAngle = 0.0f;
+    float targetAngle = 0.0f;
+    float openSpeed = 90.0f;
 
- 
+
 
 
     void setupMesh();

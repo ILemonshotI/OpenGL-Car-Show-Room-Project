@@ -14,7 +14,7 @@ SideMirror::SideMirror(
     glm::vec3 position,
     glm::vec3 rotationAxis,
     float rotationSpeed,
-    float alpha= 1.0f
+    float alpha = 1.0f
 )
     : Object(shader, texture, position, rotationAxis, rotationSpeed, alpha)
 {
@@ -30,7 +30,7 @@ SideMirror::~SideMirror()
     vbo->Delete();
     ebo->Delete();
 
-    
+
 }
 
 
@@ -49,29 +49,29 @@ void SideMirror::setupMesh()
          0.05f, 0.1f, 0.0f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
          0.05f, 0.1f,  0.01f,  1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
 
-        // 4BACK FACE (normal 0,0,-1)
-         0.05f, 0.0f, 0.0f,  0.0f, 0.0f, -1.0f,  0.0f, 0.0f,
-        0.0f, 0.0f, 0.0f,  0.0f, 0.0f, -1.0f,  1.0f, 0.0f,
-        0.0f, 0.1f, 0.0f,  0.0f, 0.0f, -1.0f,  1.0f, 1.0f,
-         0.05f, 0.1f, 0.0f,  0.0f, 0.0f, -1.0f,  0.0f, 1.0f,
+         // 4BACK FACE (normal 0,0,-1)
+          0.05f, 0.0f, 0.0f,  0.0f, 0.0f, -1.0f,  0.0f, 0.0f,
+         0.0f, 0.0f, 0.0f,  0.0f, 0.0f, -1.0f,  1.0f, 0.0f,
+         0.0f, 0.1f, 0.0f,  0.0f, 0.0f, -1.0f,  1.0f, 1.0f,
+          0.05f, 0.1f, 0.0f,  0.0f, 0.0f, -1.0f,  0.0f, 1.0f,
 
-        // LEFT FACE (normal -1,0,0)
-        0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,  0.0f, 0.0f,
-        0.0f, 0.0f,  0.1f, -1.0f, 0.0f, 0.0f,  1.0f, 0.0f,
-        0.0f, 0.1f,  0.1f, -1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
-        0.0f, 0.1f, 0.0f, -1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
+          // LEFT FACE (normal -1,0,0)
+          0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,  0.0f, 0.0f,
+          0.0f, 0.0f,  0.1f, -1.0f, 0.0f, 0.0f,  1.0f, 0.0f,
+          0.0f, 0.1f,  0.1f, -1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
+          0.0f, 0.1f, 0.0f, -1.0f, 0.0f, 0.0f,  0.0f, 1.0f,
 
-        // TOP FACE (normal 0,1,0)
-        0.0f, 0.1f,  0.1f,  0.0f, 1.0f, 0.0f,  0.0f, 0.0f,
-         0.05f, 0.1f,  0.1f,  0.0f, 1.0f, 0.0f,  1.0f, 0.0f,
-         0.05f, 0.1f, 0.0f,  0.0f, 1.0f, 0.0f,  1.0f, 1.0f,
-        0.0f, 0.1f, 0.0f,  0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+          // TOP FACE (normal 0,1,0)
+          0.0f, 0.1f,  0.1f,  0.0f, 1.0f, 0.0f,  0.0f, 0.0f,
+           0.05f, 0.1f,  0.1f,  0.0f, 1.0f, 0.0f,  1.0f, 0.0f,
+           0.05f, 0.1f, 0.0f,  0.0f, 1.0f, 0.0f,  1.0f, 1.0f,
+          0.0f, 0.1f, 0.0f,  0.0f, 1.0f, 0.0f,  0.0f, 1.0f,
 
-        // BOTTOM FACE (normal 0,-1,0)
-        0.0f, 0.0f, 0.0f,  0.0f, -1.0f, 0.0f,  0.0f, 0.0f,
-         0.05f, 0.0f, 0.0f,  0.0f, -1.0f, 0.0f,  1.0f, 0.0f,
-         0.05f, 0.0f,  0.1f,  0.0f, -1.0f, 0.0f,  1.0f, 1.0f,
-        0.0f, 0.0f,  0.1f,  0.0f, -1.0f, 0.0f,  0.0f, 1.0f
+          // BOTTOM FACE (normal 0,-1,0)
+          0.0f, 0.0f, 0.0f,  0.0f, -1.0f, 0.0f,  0.0f, 0.0f,
+           0.05f, 0.0f, 0.0f,  0.0f, -1.0f, 0.0f,  1.0f, 0.0f,
+           0.05f, 0.0f,  0.1f,  0.0f, -1.0f, 0.0f,  1.0f, 1.0f,
+          0.0f, 0.0f,  0.1f,  0.0f, -1.0f, 0.0f,  0.0f, 1.0f
     };
 
 

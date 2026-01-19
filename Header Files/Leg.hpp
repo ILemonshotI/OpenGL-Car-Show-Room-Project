@@ -1,3 +1,10 @@
+//
+//  Leg.hpp
+//  OpenGLProject
+//
+//  Created by Ameen on 1/17/26.
+//
+
 #ifndef LEG_HPP
 #define LEG_HPP
 

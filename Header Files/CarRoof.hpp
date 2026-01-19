@@ -26,7 +26,7 @@ public:
     );
 
     ~CarRoof();
-    
+
 private:
     VAO CarRoofVAO;   // renamed to avoid shadowing
     VBO* vbo;

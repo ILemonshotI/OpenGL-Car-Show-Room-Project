@@ -19,7 +19,7 @@ namespace Material
     void unSetGlass(Shader& shader);
 
     // ---- PBR ----
-    void setPBR(Shader& shader, float metalness, float roughness,glm::vec3 albedo);
+    void setPBR(Shader& shader, float metalness, float roughness, glm::vec3 albedo);
     void unSetPBR(Shader& shader);
 }
 
